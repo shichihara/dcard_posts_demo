@@ -75,8 +75,10 @@ const TabItem = styled.div`
 `;
 
 const PageContainer = styled.div`
-  padding: 0 50px;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
 
 const Contents = () => {
@@ -94,10 +96,8 @@ const Contents = () => {
         </Tabs>
       </TabContainer>
       <PageContainer>
-        <Switch>
-          <Route path='/' exact component={ Popular }/>
-          <Route path='/lastest' component={ Lastest } />
-        </Switch>
+        <Route path='/' exact component={ Popular }/>
+        <Route path='/lastest' component={ Lastest } />
       </PageContainer>
     </Container>
   )

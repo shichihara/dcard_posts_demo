@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { DCARD_POPULAR_POST_BASE, API_POST_LIMIT } from '../constant/api';
+import { API_POST_LIMIT } from '../constant/api';
 
 export function useFetchPost(popular=true, lastId=null) {
   const [loading, setLoading] = useState(true);

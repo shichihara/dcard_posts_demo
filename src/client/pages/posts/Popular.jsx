@@ -5,6 +5,15 @@ import React, {
 } from 'react';
 import { useFetchPost } from '../../hooks/useFetchPost';
 import PostItem from '../../components/PostItem';
+import ContentLoading from '../../components/ContentLoading';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  padding: 0 50px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+`
 
 const Popular = () => {
   const [popular, setPopular] = useState(true);
@@ -26,16 +35,15 @@ const Popular = () => {
     },[loading, hasMore])
   return (
     posts.length > 0
-    ? <>
+    ? <Container>
       {
         posts.map((post, index) => {
-          console.log(posts.length / 2);
-          if (Math.floor(posts.length / 1.5 ) === index + 1) {
+          if (Math.floor(posts.length / 1 ) === index + 1) {
             return <div key={index} ref={lastPostRef} id={post.id}>
               <PostItem
                 post={post}
               />
-              {loading ? <div>Loading</div> : null}
+              {loading ? <ContentLoading/> : null}
               {error ? <div>Fetching posts failed...</div> : null}
             </div>
           }
@@ -46,8 +54,8 @@ const Popular = () => {
           </div>
         })
       }
-    </>
-    : <></>
+    </Container>
+    : <Container></Container>
   )
 }
 

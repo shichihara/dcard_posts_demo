@@ -62,6 +62,10 @@ const CountElement = styled.div`
   color: rgb(163, 163, 163);
 `;
 
+const GrayImage = styled.img`
+  filter: grayscale(100%);
+`
+
 const PostItem = ({post}) => {
   return (
     post
@@ -82,11 +86,14 @@ const PostItem = ({post}) => {
         <IconBlock>
           <IconGroup>
             { 
-              post.reactions
+              post.likeCount > 0 
+
+              ? post.reactions
               .slice(0,3)
               .map(reaction => 
                 <IconItem key={reaction.id} reaction={reaction}/>
               )
+              : <GrayImage src='https://megapx-assets.dcard.tw/images/52057289-337a-4f2f-88c0-cb8a77ee422a/orig.png'/>
             }
             
           </IconGroup>
