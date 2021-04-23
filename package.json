@@ -1,21 +1,29 @@
 {
   "name": "ssr-test",
   "version": "0.1.0",
-  "private": true,
+  "main": "index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.1",
+    "babel-polyfill": "^6.26.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "https": "^1.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "styled-components": "^5.2.3",
+    "svg-url-loader": "^7.1.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build-client": "webpack --mode development --config webpack.client.js --watch",
+    "build-server": "webpack --mode development --config webpack.server.js --watch",
+    "build": "npm-run-all --parallel build-* server ",
+    "server": "nodemon --inspect build/bundle.js"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +42,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "file-loader": "^6.2.0",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "license": "MIT"
 }
