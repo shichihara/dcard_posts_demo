@@ -15,7 +15,7 @@ const Banner = styled.div`
 const Container = styled.div`
   max-width: 1280px;
   height: 100%;
-  margin: auto 100px;
+  margin: auto 25%;
   padding: 0px 20px;
   display: flex;
   -moz-box-align: center;
