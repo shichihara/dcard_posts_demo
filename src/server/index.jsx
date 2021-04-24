@@ -15,11 +15,6 @@ const DCARD_POST_CONTENT_URL = 'https://dcard.tw/_api/posts/'
 
 app.use(express.static("public"));
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
-
 app.get('/posts', async (req, res) => {
   const limit = req.query.limit;
   const popular = req.query.popular;
@@ -68,7 +63,10 @@ app.get('*', (req, res) => {
   );
   const html = `
     <html>
-      <head></head>
+      <head>
+        <title>Dcard Posts Demo</title>
+        <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/f/f8/Dcard_Favicon_x520.png">
+      </head>
       <body>
         <div id="root">${content}</div>
         <script crossorigin src="bundle.js"></script>
