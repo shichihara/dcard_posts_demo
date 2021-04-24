@@ -36,8 +36,8 @@ Use `IntersectionObserver` API to achieve infinite scroll and only load more dat
 To solve **CORS** issue in dcard 3rd-party-API, in server-side I use `express` to build own proxy server.
 
 ## Roadmap
-- [] Post comments 
-- [] Post search
-- [] Import `next.js` to implement forum list and route
-- [] UX/UI optimization
+- [ ] Post comments 
+- [ ] Post search
+- [ ] Import `next.js` to implement forum list and route
+- [ ] UX/UI optimization
 
