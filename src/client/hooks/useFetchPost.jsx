@@ -1,44 +1,31 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { API_POST_LIMIT } from '../constant/api';
 
-export function useFetchPost(popular=true, lastId=null) {
+export function useFetchPost(postId) {
   const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
-	const [posts, setPosts] = useState([]);
-	const [hasMore, setHasMore] = useState(true);
+	const [postData, setPostData] = useState({ 
+    title: '',
+    content: '',
+    forumName: '',
+   });
 
   useEffect(() => {
     setLoading(true);
 		setError(false);
-
-    if (lastId) {
-      axios.get('/posts' +'?popular=' + popular + '&limit=' + API_POST_LIMIT + '&before=' +　lastId)
-        .then((result) => {
-          setPosts(prevPosts => {
-            return [...prevPosts, ...result.data]
-          });
-          setHasMore(result.data.length > 0);
-          setLoading(false);
-        })
-        .catch(() => {
-          setError(true);
+    axios.get('/post/' + postId)
+      .then((result) => {
+        setPostData({
+          title: result.data.title,
+          content: result.data.content,
+          forumName: result.data.forumName,
         });
-    } else {
-      axios.get('/posts' +'?popular=' + popular +' &limit=' + API_POST_LIMIT)
-        .then((result) => {
-          // @ts-ignore
-          setPosts(prevPosts => {
-            return [...prevPosts, ...result.data]
-          });
-          setHasMore(result.data.length > 0);
-          setLoading(false);
-        })
-        .catch(() => {
-          setError(true);
-        });
-      }
-    },[popular, lastId]);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError(true);
+      });
+  },[postId]);
   
-  return { loading, error, posts, hasMore };
+  return { loading, error, postData };
 }

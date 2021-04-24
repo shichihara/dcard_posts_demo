@@ -31,14 +31,5 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
-  // devServer: {
-  //   proxy: {
-  //     '/_api/': {
-  //       target: 'https://www.dcard.tw/',
-  //       secure: false,
-  //       changeOrigin: true
-  //     }
-  //   }
-  // },
   externals: [webpackNodeExternals()]
 }

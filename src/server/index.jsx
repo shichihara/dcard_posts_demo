@@ -10,6 +10,9 @@ const app = express();
 
 const port = process.env.port || 3000;
 
+const DCARD_POSTS_BASE_URL = 'https://dcard.tw/_api/posts?';
+const DCARD_POST_CONTENT_URL = 'https://dcard.tw/_api/posts/'
+
 app.use(express.static("public"));
 
 app.use((req, res, next) => {
@@ -24,18 +27,18 @@ app.get('/posts', async (req, res) => {
   try {
     if (popular) {
       if (before) {
-        const data = await axios.get('https://dcard.tw/_api/posts?popular=true'+ '&limit=' + limit + '&before=' + before)
+        const data = await axios.get(DCARD_POSTS_BASE_URL + 'popular=true'+ '&limit=' + limit + '&before=' + before)
         res.json(data.data);
       } else {
-        const data = await axios.get('https://dcard.tw/_api/posts?popular=true'+ '&limit=' + limit)
+        const data = await axios.get(DCARD_POSTS_BASE_URL + 'popular=true'+ '&limit=' + limit)
         res.json(data.data);
       }
     } else {
       if (before) {
-        const data = await axios.get('https://dcard.tw/_api/posts?limit=' + limit + '&before=' + before)
+        const data = await axios.get(DCARD_POSTS_BASE_URL + 'limit=' + limit + '&before=' + before)
         res.json(data.data);
       } else {
-        const data = await axios.get('https://dcard.tw/_api/posts?limit=' + limit)
+        const data = await axios.get(DCARD_POSTS_BASE_URL + 'limit=' + limit)
         res.json(data.data);
       }
     }
@@ -45,6 +48,17 @@ app.get('/posts', async (req, res) => {
     res.send(err);
   }
 });
+
+
+app.get('/post/:id', async (req, res) => {
+  const id = req.params.id;
+  try {
+    const data = await axios.get(DCARD_POST_CONTENT_URL + id)
+    res.json(data.data);
+  } catch(err) {
+    res.send(err);
+  }
+})
 
 app.get('*', (req, res) => {
   const content = renderToString(

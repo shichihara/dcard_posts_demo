@@ -22,7 +22,6 @@ const TabContainer = styled.div`
   background-color: white;
   top: 48px;
   padding: 20px 60px 0px;
-  z-index: 10;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px 4px 0px 0px;
 `;
@@ -42,7 +41,6 @@ const TabItem = styled.div`
   align-items: center;
   -webkit-box-pack: start;
   justify-content: flex-start;
-  z-index: 10;
   padding-bottom: 1px;
 
   a {

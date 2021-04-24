@@ -7,12 +7,13 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
-    "babel-polyfill": "^6.26.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "https": "^1.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.2.0",
+    "react-modal": "^3.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "styled-components": "^5.2.3",
@@ -22,8 +23,8 @@
   "scripts": {
     "build-client": "webpack --mode development --config webpack.client.js --watch",
     "build-server": "webpack --mode development --config webpack.server.js --watch",
-    "build": "npm-run-all --parallel build-* server ",
-    "server": "nodemon --inspect build/bundle.js"
+    "server": "nodemon --inspect build/bundle.js",
+    "start": "npm-run-all --parallel build-* server "
   },
   "eslintConfig": {
     "extends": [

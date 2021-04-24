@@ -15,7 +15,7 @@ const Banner = styled.div`
 const Container = styled.div`
   max-width: 1280px;
   height: 100%;
-  margin: auto;
+  margin: auto 100px;
   padding: 0px 20px;
   display: flex;
   -moz-box-align: center;
@@ -28,7 +28,6 @@ const Header = () => {
     <Banner>
       <Container>
         <LogoItem/>
-        <SearchBar/>
       </Container>
     </Banner>
   )
